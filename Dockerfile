@@ -1,10 +1,6 @@
-FROM    ubuntu:jammy
-
-RUN     apt-get update
-RUN     apt-get install -y python3
-RUN	    /usr/bin/mkdir /application
-
-COPY    httpServer	/application/
-
-RUN     cd /application/
-RUN     /usr/bin/python3 -m httpServer &
+FROM    ubuntu:latest
+RUN apt-get update && apt-get install -y python3
+RUN /usr/bin/mkdir /application && cd /application/
+COPY    httpServer /application/
+RUN /usr/bin/python3 -m httpServer &
+ENTRYPOINT ["/bin/bash"]
