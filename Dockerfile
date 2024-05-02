@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM ubuntu:latest
 RUN apt-get update && apt-get install -y python3 bash
 RUN /usr/bin/mkdir /application
 COPY httpServer /application/
