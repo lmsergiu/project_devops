@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Clean Up') {
             steps {
-                sh 'docker container stop app'
-                sh 'docker container rm app'
-                sh 'docker image rm appimg'
+                sh 'docker container stop app >/dev/null 2>&1'
+                sh 'docker container rm app >/dev/null 2>&1'
+                sh 'docker image rm appimg >/dev/null 2>&1'
             }
         }
         stage('Deploy') {
