@@ -1,6 +1,7 @@
 FROM nginx:latest
 RUN apt-get update && apt-get install -y python3
-RUN /usr/bin/mkdir /application && cd /application/
+RUN /usr/bin/mkdir /application
 COPY httpServer /application/
-RUN /usr/bin/python3 -m httpServer &
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
+RUN chmod +x startHttpServer.sh
+RUN startHttpServer.sh
