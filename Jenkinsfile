@@ -2,13 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Clean Up') {
-            steps {
-                sh 'docker container stop app >/dev/null 2>&1'
-                sh 'docker container rm app >/dev/null 2>&1'
-                sh 'docker image rm appimg >/dev/null 2>&1'
+        stage('Clean Up'){
+            steps{
+                sh '''
+                    if docker container ls -a | grep app ;
+                    then 
+                        docker container stop app
+                        docker container rm app
+                        docker image rm appimg
+                    fi
+                '''
+                }
             }
-        }
         stage('Deploy') {
             steps {
                 sh 'docker build -t appimg .'
