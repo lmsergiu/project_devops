@@ -3,5 +3,5 @@ RUN apt-get update && apt-get install -y python3 bash
 RUN /usr/bin/mkdir /application
 COPY httpServer /application/
 COPY --chmod=755 startHttpServer.sh /application/
-RUN /application/startHttpServer.sh
+RUN nohup /application/startHttpServer.sh
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
