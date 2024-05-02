@@ -5,9 +5,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker build -t appimg .'
-                sh 'docker run -d --name app -p 4000:8000 appimg'
+                sh 'docker run -d --name app appimg'
                 sleep 10
-                sh 'curl -k localhost:4000'
+                sh 'curl -k localhost:8000'
             }
         }
     }
