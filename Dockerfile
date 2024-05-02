@@ -4,4 +4,4 @@ RUN /usr/bin/mkdir /application
 COPY httpServer /application/
 COPY --chmod=755 startHttpServer.sh /application/
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-RUN startHttpServer.sh
+RUN /application/startHttpServer.sh
